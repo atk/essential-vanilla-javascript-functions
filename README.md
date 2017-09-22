@@ -46,7 +46,7 @@ function array_unique(arr){
 
     for(i = 0; i < arr.length; i++){
         key = keyify(arr[i]);
-        if(!(key in seen)){
+        if(!seen.hasOwnProperty(key)){
             ret_arr.push(arr[i]);
             seen[key] = true;
         }

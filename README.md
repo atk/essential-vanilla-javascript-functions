@@ -206,19 +206,13 @@ array_reject([1, 2, 3, 4, 5], function (value) {
 ## `array_split()`
 > Breaks an array into the given number of groups
 ```js
-ffunction array_split(arr, count) {
-    var temp_arr = [[]];
+fuunction array_split(arr, count) {
+    var temp_arr = [];
     var arr_length = arr.length;
     var chunk_length = Math.floor(arr_length/count);
 
-    for (var i=0; i<arr_length; i++) {
-        var last_chunk = temp_arr[temp_arr.length-1];
-        
-        if (last_chunk.length + 1 < chunk_length || temp_arr.length === count) {
-            last_chunk.push(arr[i]);
-        } else {
-            temp_arr.push([arr[i]]);
-        }
+    for(var i=0; i<arr_length; i+=chunk_length) {
+        temp_arr.push(arr.slice(i, i+chunk_lenth));
     }
 
     return temp_arr;
